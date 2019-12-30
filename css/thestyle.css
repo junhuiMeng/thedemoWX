@@ -1,0 +1,33 @@
+/*header*/
+.mui-bar.mui-bar-nav{
+	background: #C4282B;
+}
+.mui-bar.mui-bar-nav>.mui-title {
+	color: white;
+}
+.mui-bar .mui-icon{
+	color: white;
+	font-size: 14px;
+	padding-top: 15px;
+	
+}
+
+/*button*/
+.mui-btn.mui-btn-danger.mui-btn-block {
+	background: #C4282B;
+}
+.mui-btn-block {
+	padding: 10px 0;
+	font-size: 14px;
+}
+
+/*ul/li*/
+.mui-table-view,.mui-table-view:after,.mui-table-view:before{
+	background-color: rgba(255,255,255,0.1);
+}
+.mui-content-padded{
+	text-align: center;
+	font-size: 16px;
+	color: #323232;
+	font-weight: 600;
+}

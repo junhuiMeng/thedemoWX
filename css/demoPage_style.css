@@ -1,0 +1,72 @@
+
+.mui-table-view-cell,.input-group{
+	display: -webkit-flex;
+	display: flex;
+	flex-wrap: nowrap;
+	font-size: 14px;
+}
+
+.mui-table-view .mui-content-padded{
+	padding:15px 10px;
+	background-color: aliceblue;
+}
+.input-row.mui-radio{
+	display: flex;
+	width: 25%;
+	padding: 0px 2%;
+}
+.comname{
+	width: 30%;
+}
+.input-group{
+	width: 70%;	
+}
+.mui-radio input[type=radio]:checked:before{
+	content: '\e442';
+}
+
+.mui-radio input[type=radio]:before,
+.mui-radio input[type=radio],
+.mui-radio input[type=radio]:checked:before{
+	font-size: 18px;
+	width: 18px;
+	left: 0px;
+	top: 0px;
+}
+.mui-radio span{
+	margin-left:18px;
+	font-size: 14px;
+}
+
+textarea{
+	font-size: 14px;
+}
+p{
+	margin: 15px 0 5px 10px;
+}
+#contennt0{
+	background-color:#deefee ;
+}
+
+#contennt2{
+	background-color:#fbf6f6 ;
+}
+.mui-input-row{
+	margin: 10px 5px;
+}
+.mui-input-row p{
+	font-size: 12px;
+}
+#submit{
+	margin: 40px;
+}
+
+#loading{
+	position: relative;
+    top: 300px;
+    left: 40%;
+    color: #999;
+    font-family: "新宋体";
+    z-index: 5;
+    font-size: 22px;
+}

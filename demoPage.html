@@ -1,0 +1,588 @@
+<!doctype html>
+<html>
+
+	<head>
+		<title>民主评议页面</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta charset="utf-8">
+		<!--	<script src="js/jquery-1.9.1.min.js"></script>-->
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/thestyle.css" />
+		<link rel="stylesheet" href="css/demoPage_style.css" />
+
+	</head>
+
+	<body>
+		<!--顶部历史记录导航-->
+		<header class="mui-bar mui-bar-nav" id="head">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<!--<h1 class="mui-title">民主评议页面</h1>-->
+		</header>
+
+		<div class="mui-content">
+			<form id="ff">
+				<!--<ul class="mui-table-view" id="contennt1">
+					<h5 class="mui-content-padded">宝塔区行政管理部门测评：</h5>
+					<li class="mui-table-view-cell">
+						<div class="comname">单位单位1</div>
+						<div class="input-group">
+							<div class="input-row mui-radio">
+								<input name="radio11" type="radio" value="1" checked>
+								<span>满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio11" value="2" type="radio">
+								<span>基本满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio11" value="3" type="radio">
+								<span>一般</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio11" value="4" type="radio">
+								<span>不满意</span>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="comname">单位单位2</div>
+						<div class="input-group">
+							<div class="input-row mui-radio">
+								<input name="radio12" value="1" type="radio" checked>
+								<span>满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio12" value="2" type="radio">
+								<span>基本满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio12" value="3" type="radio">
+								<span>一般</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio12" value="4" type="radio">
+								<span>不满意</span>
+							</div>
+
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="comname">单位单位3</div>
+						<div class="input-group">
+							<div class="input-row mui-radio">
+								<input name="radio13" type="radio" checked>
+								<span>满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio13" type="radio">
+								<span>基本满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio13" type="radio">
+								<span>一般</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio13" type="radio">
+								<span>不满意</span>
+							</div>
+
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="comname">单位单位4</div>
+						<div class="input-group">
+							<div class="input-row mui-radio">
+								<input name="radio14" type="radio" checked>
+								<span>满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio14" type="radio">
+								<span>基本满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio14" type="radio">
+								<span>一般</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio14" type="radio">
+								<span>不满意</span>
+							</div>
+
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="comname">单位单位5</div>
+						<div class="input-group">
+							<div class="input-row mui-radio">
+								<input name="radio15" type="radio" checked>
+								<span>满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio15" type="radio">
+								<span>基本满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio15" type="radio">
+								<span>一般</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio15" type="radio">
+								<span>不满意</span>
+							</div>
+
+						</div>
+					</li>
+				</ul>
+
+				<ul class="mui-table-view" id="contennt2">
+					<h5 class="mui-content-padded">宝塔区行政执法部门测评：</h5>
+					<li class="mui-table-view-cell">
+						<div class="comname">单位单位1</div>
+						<div class="input-group">
+							<div class="input-row mui-radio">
+								<input name="radio21" type="radio" checked>
+								<span>满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio21" type="radio">
+								<span>基本满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio21" type="radio">
+								<span>一般</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio21" type="radio">
+								<span>不满意</span>
+							</div>
+
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="comname">单位单位2</div>
+						<div class="input-group">
+							<div class="input-row mui-radio">
+								<input name="radio22" type="radio" checked>
+								<span>满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio22" type="radio">
+								<span>基本满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio22" type="radio">
+								<span>一般</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio22" type="radio">
+								<span>不满意</span>
+							</div>
+
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="comname">单位单位3</div>
+						<div class="input-group">
+							<div class="input-row mui-radio">
+								<input name="radio23" type="radio" checked>
+								<span>满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio23" type="radio">
+								<span>基本满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio23" type="radio">
+								<span>一般</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio23" type="radio">
+								<span>不满意</span>
+							</div>
+
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="comname">单位单位4</div>
+						<div class="input-group">
+							<div class="input-row mui-radio">
+								<input name="radio24" type="radio" checked>
+								<span>满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio24" type="radio">
+								<span>基本满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio24" type="radio">
+								<span>一般</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio24" type="radio">
+								<span>不满意</span>
+							</div>
+
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="comname">单位单位5</div>
+						<div class="input-group">
+							<div class="input-row mui-radio">
+								<input name="radio25" type="radio" checked>
+								<span>满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio25" type="radio">
+								<span>基本满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio25" type="radio">
+								<span>一般</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio52" type="radio">
+								<span>不满意</span>
+							</div>
+
+						</div>
+					</li>
+				</ul>
+
+				<ul class="mui-table-view" id="contennt3">
+					<h5 class="mui-content-padded">宝塔区公共服务行业和窗口单位测评：</h5>
+					<li class="mui-table-view-cell">
+						<div class="comname">单位单位1</div>
+						<div class="input-group">
+							<div class="input-row mui-radio">
+								<input name="radio31" type="radio" checked>
+								<span>满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio31" type="radio">
+								<span>基本满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio31" type="radio">
+								<span>一般</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio31" type="radio">
+								<span>不满意</span>
+							</div>
+
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="comname">单位单位2</div>
+						<div class="input-group">
+							<div class="input-row mui-radio">
+								<input name="radio32" type="radio" checked>
+								<span>满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio32" type="radio">
+								<span>基本满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio32" type="radio">
+								<span>一般</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio32" type="radio">
+								<span>不满意</span>
+							</div>
+
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="comname">单位单位3</div>
+						<div class="input-group">
+							<div class="input-row mui-radio">
+								<input name="radio33" type="radio" checked>
+								<span>满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio33" type="radio">
+								<span>基本满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio33" type="radio">
+								<span>一般</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio33" type="radio">
+								<span>不满意</span>
+							</div>
+
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="comname">单位单位4</div>
+						<div class="input-group">
+							<div class="input-row mui-radio">
+								<input name="radio34" type="radio" checked>
+								<span>满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio34" type="radio">
+								<span>基本满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio34" type="radio">
+								<span>一般</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio34" type="radio">
+								<span>不满意</span>
+							</div>
+
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="comname">单位单位5</div>
+						<div class="input-group">
+							<div class="input-row mui-radio">
+								<input name="radio35" type="radio" checked>
+								<span>满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio35" type="radio">
+								<span>基本满意</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio35" type="radio">
+								<span>一般</span>
+							</div>
+							<div class="input-row mui-radio">
+								<input name="radio35" type="radio">
+								<span>不满意</span>
+							</div>
+
+						</div>
+					</li>
+					<input type="hidden" value="aaaa" />
+				</ul>-->
+				<!--<div class="mui-input-row" id="advice">
+					<p> 您若还有其他的意见或建议，可以在下面填写哦！</p>
+					<textarea id="textarea" rows="5" placeholder="请在这里填写您的建议"></textarea>
+				</div>-->
+				<!--<div class="mui-content-padded" id="submit">
+					<button id="submitres" class="mui-btn mui-btn-danger mui-btn-block">提交</button>
+				</div>-->
+
+			</form>
+		</div>
+
+	</body>
+
+</html>
+<script>
+	mui.init({
+		swipeBack: true //启用右滑关闭功能
+	});
+	var num = 0;
+	//提交数据,清除缓存
+	function res() {
+
+		var chooseID = localStorage.getItem('chooseID');
+		var chooseArea = localStorage.getItem('chooseArea');
+		var userID = localStorage.getItem('userID');
+		var head = localStorage.getItem('thehead');
+		var advice = $('#textarea').val();
+		var res = $("#ff").serializeArray();
+		console.log(chooseID + "===" + chooseArea + "===" + userID);
+		if(chooseArea) {
+			var areaID = chooseArea.split(':')[1];
+			var areaName = chooseArea.split(':')[0];
+		}
+		if(chooseID) {
+			var sfID = chooseID.split(':')[1];
+		}
+		console.log('length===', res.length);
+		console.log('res===', num);
+		console.log('===', res.length / num);
+		if((res.length / num) < 0.8) {
+			mui.alert('您评议的单位数量不足80%，请继续选择');
+			return;
+		}
+
+		var btnArray = ['取消', '确认'];
+		var msg = '确认您的评议结果'
+		mui.confirm(msg, '确认提交', btnArray, function(e) {
+			if(e.index == 1) {
+
+				var params = {
+					'res': res,
+					'advice': advice,
+					'userID': userID,
+					'areaID': areaID,
+					'sfID': sfID,
+					'year': head.slice(0, 4)
+				}
+
+				$.ajax({
+					url: window.url + '/accessresults',
+					type: 'POST',
+					data: JSON.stringify(params),
+					beforeSend: function(XMLHttpRequest) {
+						$("#loading").html("<p>数据提交中...</p>");
+					},
+					success: function(data) {
+						console.log('提交数据成功!', data)
+						//  清除缓存退出页面										
+						mui.toast('提交成功，感谢参与');
+
+						localStorage.clear();
+
+						setTimeout(function() {
+							f_close();
+							//window.location.href='index.html';						
+						}, 1500);
+
+					},
+					error: function(err) {
+						console.log('提交数据失败!', err)
+						mui.toast('提交失败，请重新提交');
+					}
+				})
+
+			} else {
+				mui.toast('您已取消，请重新选择');
+			}
+		})
+	}
+
+	//获取数据渲染页面
+	function getInfo() {
+		var head = localStorage.getItem('thehead');
+		console.log(head)
+		$('#head').append(
+			'<h1 class="mui-title">' +
+			head +
+			'</h1>'
+		)
+		var chooseID = localStorage.getItem('chooseID');
+		var chooseArea = localStorage.getItem('chooseArea');
+		var userID = localStorage.getItem('userID');
+		console.log(chooseID + "===" + chooseArea + "===" + userID);
+		if(chooseArea) {
+			var areaID = chooseArea.split(':')[1];
+			var areaName = chooseArea.split(':')[0];
+		}
+		if(chooseID) {
+			var sfID = chooseID.split(':')[1];
+		}
+
+		$.ajax({
+			type: "GET",
+			url: window.url + "/gettopic?&id=" + areaID,
+			dataType: 'json',
+			success: function(data) {
+				console.log('请求成功：', data);
+
+				if(data.body.listData.length > 0) {
+					$.each(data.body.listData, function(i, it) {
+						var title = Object.keys(it)[0];
+						var radio0 = data.body.dictList[0].label;
+						var value0 = data.body.dictList[0].value;
+						var radio1 = data.body.dictList[1].label;
+						var value1 = data.body.dictList[1].value;
+						var radio2 = data.body.dictList[2].label;
+						var value2 = data.body.dictList[2].value;
+						var radio3 = data.body.dictList[3].label;
+						var value3 = data.body.dictList[3].value;
+						//console.log('title----', it[title], radio0, radio1, radio2, radio3);
+						$('#ff').append('<ul class="mui-table-view" id="contennt' +
+							i +
+							'"><h5 class="mui-content-padded">' +
+							areaName + title +
+							'</h5></ul>'
+						)
+
+						// 获取题目长度
+						console.log('length：', it[title].length);
+						num += it[title].length;
+
+						$.each(it[title], function(j, item) {
+
+							var q = item.name;
+							var qid = item.id;
+							//console.log('q----', q)
+							$('#contennt' + i).append(
+								'<li class="mui-table-view-cell"><div class="comname">' +
+								q +
+								'</div><div class="input-group"><div class="input-row mui-radio"><input type="radio" name="' +
+								qid +
+								'" value="' +
+								value0 +
+								'" ><span>' +
+								radio0 +
+								'</span></div><div class="input-row mui-radio"><input type="radio" name="' +
+								qid +
+								'" value="' +
+								value1 +
+								'" ><span>' +
+								radio1 +
+								'</span></div><div class="input-row mui-radio"><input type="radio" name="' +
+								qid +
+								'" value="' +
+								value2 +
+								'" ><span>' +
+								radio2 +
+								'</span></div><div class="input-row mui-radio"><input type="radio" name="' +
+								qid +
+								'" value="' +
+								value3 +
+								'" ><span>' +
+								radio3 +
+								'</span></div></li>'
+							)
+						})
+					});
+
+					$('#ff').append(
+						' <div class="mui-input-row" id="advice">' +
+						'<p> 您若还有其他的意见或建议，可以在下面填写哦！</p>' +
+						'<textarea id="textarea" rows="5" placeholder="请在这里填写您的建议"></textarea></div>' +
+						'<div class="mui-content-padded" id="submit">' +
+						'<button id="submitres" class="mui-btn mui-btn-danger mui-btn-block">提交</button></div>'
+					)
+				} else {
+					$('#ff').append(
+						"<img src='img/newnull.png' style='margin-top:30%;margin-left:30%;height:35%;width:35%;'/>"
+					)
+				}
+			},
+			error: function(err) {
+				console.log('请求成功：', err)
+			}
+		});
+
+	}
+
+	$(function() {
+		$("#loading").ajaxStart(function() {
+			$(this).html("<p>数据提交中...</p>");
+		});
+		$("#loading").ajaxSuccess(function() {
+
+			$(this).empty(); // 或者直接清除
+		});
+	});
+
+	function f_close() {
+		document.addEventListener('WeixinJSBridgeReady', function() {
+			WeixinJSBridge.call('closeWindow');
+		}, false);
+		WeixinJSBridge.call('closeWindow');
+	}
+
+	mui('.mui-content').on('tap', '#submitres', res);
+	window.addEventListener(onload, getInfo())
+</script>

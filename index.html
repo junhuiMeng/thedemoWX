@@ -1,0 +1,161 @@
+﻿<!doctype html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<head>
+			<meta charset="utf-8">
+			<title>延安市政风行风</title>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+			<meta name="format-detection" content="telephone=no">
+			<meta name="renderer" content="webkit">
+			<meta http-equiv="Cache-Control" content="no-siteapp" />
+			<script src="js/jquery-1.9.1.min.js"></script>
+			<script src="js/mui.min.js"></script>
+			<script type="text/javascript" src="js/base.js"></script>
+			<link href="css/mui.min.css" rel="stylesheet" />
+			<link rel="stylesheet" href="css/thestyle.css" />
+
+			<style type="text/css">
+				.mui-content {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					background: url(img/bgt.png) no-repeat;
+					background-size: 100% 100%;
+					background-position-y: bottom;
+					bottom: 0px;
+				}
+				
+				#loading {
+					position: relative;
+					top: 250px;
+					left: 40%;
+					color: #999;
+					font-family: "新宋体";
+				}
+			</style>
+		</head>
+
+		<body>
+			<!--顶部历史记录导航-->
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-pull-left"></a>
+				<h1 class="mui-title">延安市政风行风</h1>
+			</header>
+			<div class="mui-content">
+				<div id="loading">
+				</div>
+			</div>
+
+		</body>
+
+</html>
+
+<script>
+	document.getElementsByTagName("body")[0].style.height = window.innerHeight + 'px';
+
+	function timeStatus() {
+		$.ajax({
+			type: "get",
+			url: window.url + "/timeJudgment",
+			success: function(data) {
+				console.log("成功timeStatus==", data)
+				if(data.body.bool == 'false') {
+					mui.confirm('当前时间段内暂无评议', '', ['确定'], function() {
+						f_close();
+					})
+				}else{
+					login();
+				}
+			},
+			error: function(err) {
+				console.log("时间段失败timeStatus==", err)
+
+			}
+		});
+	}
+
+	function login() {
+		var Data = GetRequest();
+		//var Token = GetQueryString("token");
+		console.log("Data==" + Data);
+		$.ajax({
+			type: 'GET',
+			url: window.url + "/getOpenid?&code=" + Data,
+			//	data: Data,
+			beforeSend: function(XMLHttpRequest) {
+				$("#loading").html("<h4>加载中...</h4>");
+			},
+			success: function(data) {
+				console.log("成功。。。", data);
+				if(data.body.Status) {
+					mui.confirm('您已参与过评议！', '', ['确定'], function() {
+						//window.history.back();
+						f_close()
+					})
+				} else {
+					var id = data.body.VouserList[0].id;
+					console.log('id--', id)
+					localStorage.setItem('userID', id);
+
+					setTimeout(function() {
+						window.location.href = 'chooseID.html';
+					}, 500);
+					
+				}
+
+				//console.log(data.success)
+				//sessionStorage.setItem('Data', Data);
+				//sessionStorage.setItem('Token', Token);
+
+				$("#loading").empty();
+			},
+			error: function(data) {
+				mui.alert("请求超时，返回刷新或联系管理员");
+				$("#loading").empty();
+			}
+		})
+
+	}
+
+	//获取URL,获取参数,取出code
+	function GetRequest() {
+		var url = decodeURI(location.search); //获取url中"?"符后的字串
+		//		var theRequest = new Object();
+		//		console.log(url)
+		var thecode;
+		if(url.indexOf("?") != -1) {
+			var str = url.substr(1);
+			strs = str.split("&");
+			for(var i = 0; i < strs.length; i++) {
+				if(strs[i].split("=")[0] == 'code') {
+					thecode = strs[i].split("=")[1]
+				};
+			}
+		}
+		return thecode;
+	}
+
+	$(function() {
+		$("#loading").ajaxStart(function() {
+			$(this).html("<h3>加载中...</h3>");
+		});
+		$("#loading").ajaxSuccess(function() {
+			//      $(this).html.("");
+			$(this).empty(); // 或者直接清除
+		});
+	});
+	
+	
+	function f_close() {
+		document.addEventListener('WeixinJSBridgeReady', function() {
+			WeixinJSBridge.call('closeWindow');
+		}, false);
+		WeixinJSBridge.call('closeWindow');
+	}
+
+	window.addEventListener(onload, timeStatus());
+</script>

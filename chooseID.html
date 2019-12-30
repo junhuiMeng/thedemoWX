@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+
+	<head>
+		<title>身份选择</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta charset="utf-8">
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/chooseID_style.css" />
+		<link rel="stylesheet" href="css/thestyle.css" />
+		<style>
+			.mui-popup-text {
+				max-height: 450px;
+				overflow-y: scroll;
+			}
+			
+			.mui-table-view-radio .mui-table-view-cell {
+				margin: 35px auto;
+			}
+		</style>
+
+
+
+
+	</head>
+
+	<body>
+		<!--顶部历史记录导航-->
+		<header class="mui-bar mui-bar-nav" id='head'>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<!--<h1 class="mui-title">2020年延安市民主评议政风行风</h1>-->
+		</header>
+		<div class="mui-content">
+			<h5 class="mui-content-padded">请选择您参加评议的身份：</h5>
+			<ul class="mui-table-view mui-table-view-radio" id='thecontent'>
+
+				<!--<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						受访群众
+						<input type="hidden" value="111"/>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-selected">
+					<a class="mui-navigate-right">
+						党政和社团部门单位
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						党代表、人大代表、政协委员
+					</a>
+				</li>-->
+			</ul>
+			<!--<div class="mui-content-padded">
+				<i id="info"></i>
+			</div>-->
+<!--
+			<div class="mui-card-content">
+				<p>注意事项：</p>
+				<p>1，评议时间：<span id="footspan">2019年12月20日——2019年12月29日</span></p>
+				<p>2，评议规则：满意=90分，基本满意=80分，一般=60分，不满意=0分</p>
+				<p>3，一个用户只能给一个区划的问卷进行评议</p>
+				<p>4，注意：每个问卷评议单位达到80%才能提交</p>
+			</div>-->
+		</div>
+	</body>
+
+</html>
+<script>
+	mui.init({
+		swipeBack: true //启用右滑关闭功能
+	});
+//	document.getElementsByTagName("body")[0].style.height = window.innerHeight + 'px';
+
+		
+	function GetURL() {
+		var url = decodeURI(location.search); //获取url中"?"符后的字串
+		var theRequest = new Object();
+		var code  = GetQueryString("code");	
+		if(url.indexOf("?") != -1) {
+			var str = url.substr(1);
+			strs = str.split("&");
+			for(var i = 0; i < strs.length; i++) {
+				theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+			}
+		}
+		console.log('===', theRequest)
+		return theRequest;
+	}
+		
+
+	//	获取页面身份信息
+	function getIDInfo() {
+
+		$.ajax({
+			type: 'GET',
+			url: window.url + '/getpersontype',
+			dataType: 'json',
+			//			headers: {
+			//				'Content-Type': 'application/json'
+			//				},				
+			success: function(data) {
+				console.log('请求身份成功!', data);
+				console.log('userid==', localStorage.getItem('userID'))
+				var others = data.body.demThemelist[0];
+				var head = others.year + others.theme;
+				var ruler = '<p>' + others.attention + '</p>';
+				mui.confirm(ruler, '评议说明', ['确认']);
+				localStorage.setItem("thehead", head);
+				$('#head').append(
+					'<h1 class="mui-title">' +
+					head +
+					'</h1>'
+				)
+				$('#footspan').text(others.hold1 + "——" + others.hold2)
+
+				$.each(data.body.dictList, function(i, item) {
+					if(data.body.dictList.length > 0) {
+						var sfname = item.label;
+						var sfID = ':' + item.id;
+						console.log(sfname, sfID);
+						$('#thecontent').append(
+							'<li class="mui-table-view-cell"><a class="mui-navigate-right">' +
+							sfname +
+							'<i class="i">' +
+							sfID +
+							'</a></li>'
+						)
+
+					} else {
+						$('#thecontent').append(
+							"<img src='img/newnull.png' style='margin-top:30%;margin-left:30%;height:35%;width:35%;'/>"
+						)
+					}
+				});
+			},
+			error: function(err) {
+				console.log('请求身份失败!', err)
+			}
+		})
+	}
+
+	document.querySelector('.mui-table-view.mui-table-view-radio').addEventListener('selected', function(e) {
+		var chooseID = e.detail.el.innerText;
+		var chsfname = chooseID.split(':')[0];
+		console.log('choose身份', chooseID);
+		var msg = "您将以" + chsfname + "的身份参加民主评议，请确认";
+		var btnArray = ['取消', '确认'];
+		mui.confirm(msg, '确认身份', btnArray, function(e) {
+			if(e.index == 1) {
+				localStorage.setItem('chooseID', chooseID);
+				window.location.href = 'chooseArea.html';
+			} else {
+				mui.toast('您已取消，请重新选择');
+				setTimeout(function() {
+					window.location.reload();
+				}, 500);
+			}
+		})
+	});
+
+	window.addEventListener(onload, getIDInfo())
+</script>

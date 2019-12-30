@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+
+	<head>
+		<title>民主评议区域选择</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta charset="utf-8">
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/chooseID_style.css" />
+		<link rel="stylesheet" href="css/thestyle.css" />
+		<style>
+			.mui-table-view-radio .mui-table-view-cell {
+				width: 30%;
+			}			
+			.mui-table-view.mui-table-view-radio {
+				display: -webkit-flex;
+				display: flex;
+				flex-wrap: wrap;
+				width: 90%;
+			}
+			li:first-child{
+				margin: 20px 35%!important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--顶部历史记录导航-->
+		<header class="mui-bar mui-bar-nav" id="head">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<!--<h1 class="mui-title" >民主评议区域选择</h1>-->
+		</header>
+		<div class="mui-content">
+			<h5 class="mui-content-padded">请选择您参加评议的区域：</h5>
+			
+			<ul class="mui-table-view mui-table-view-radio" id='thecontent'>
+				<!--<li class="mui-table-view-cell">			
+					<a class="mui-navigate-right">
+						市本级
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-selected">
+					<a class="mui-navigate-right">
+						宝塔区
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						安塞区
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						黄陵县
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						洛川县
+					</a>
+				</li>-->
+
+			</ul>
+			<!--<div class="mui-content-padded">
+				<p id="info"></p>
+			</div>-->
+
+		</div>
+
+	</body>
+
+</html>
+<script>
+	mui.init({
+		swipeBack: true //启用右滑关闭功能
+	});
+
+	document.getElementsByTagName("body")[0].style.height = window.innerHeight + 'px';
+	//			获取页面区域信息
+	function getAreaInfo() {
+		var head=localStorage.getItem('thehead');	
+		console.log(head)
+				$('#head').append(
+					'<h1 class="mui-title">' +
+					head +
+					'</h1>'
+				)
+		
+		$.ajax({
+				type: 'GET',
+				url: window.url + '/getregion',
+				dataType: 'json',
+				success: function(data) {
+					console.log('请求区域成功!')				
+					$.each(data.body.dictList, function(i, item) {
+								if(data.body.dictList.length > 0) {
+									var qyname = item.name;
+									var qyID = ':' + item.id;
+									console.log(qyname, qyID);									
+											$('#thecontent').append(
+												'<li class="mui-table-view-cell"><a class="mui-navigate-right">' +
+												qyname +
+												'<i class="i">' +
+												qyID +
+												'</a></li>'
+											)										
+
+									} else {
+										$('#thecontent').append(
+											"<img src='img/newnull.png' style='margin-top:30%;margin-left:30%;height:35%;width:35%;'/>"
+										)
+									}
+								});
+						},
+						error: function(err) {
+							console.log('请求区域失败!')
+						}
+				})
+		}
+
+		//		var info = document.getElementById("info");
+		document.querySelector('.mui-table-view.mui-table-view-radio').addEventListener('selected', function(e) {
+			var chooseArea = e.detail.el.innerText;
+			var areaName = chooseArea.split(':')[0];
+			console.log('choose区域', chooseArea);
+			var msg = "您将参加" + areaName + "的民主评议，请确认";
+			var btnArray = ['取消', '确认'];
+			mui.confirm(msg, '确认区域', btnArray, function(e) {
+				if(e.index == 1) {
+					localStorage.setItem('chooseArea', chooseArea);
+					window.location.href = 'demoPage.html';
+				} else {
+					mui.toast('您已取消，请重新选择');
+					setTimeout(function() {
+						window.location.reload();
+					}, 500)
+
+				}
+			})
+		});
+
+		window.addEventListener(onload, getAreaInfo())
+</script>

@@ -1,0 +1,73 @@
+/*背景图*/
+.mui-content{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../img/bg.png) no-repeat;
+    background-size: 100% 100%;
+    background-position-y: bottom;
+    bottom: 0px;     
+    background-attachment:fixed;
+    min-height:100%;
+}
+
+
+.mui-input-group {
+	padding: 40px 50px 30px 20px;
+    background-color: rgba(255,255,255,0.1);
+}
+.mui-input-group:before,
+.mui-input-group:after{
+	background-color: #efeff4;
+}
+.mui-input-group>.mui-input-row{
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 3px 3px 3px #ccc;
+	/*border-bottom: #666 1px solid;*/	
+}
+
+.mui-input-group:first-child {
+	margin-top: 40%;
+}
+
+.mui-input-group label {
+	width: 16%;
+}
+
+.mui-input-row label~input,
+.mui-input-row label~select,
+.mui-input-row label~textarea {
+	width: 82%;
+}
+.mui-middle{
+	margin: 40px 0;
+	width: 65%;
+}
+.mui-btn-yanzheng{
+	position: absolute;
+	top: 44%;
+	left: 64%;
+	width: 23%;
+}
+
+.mui-btn-outlined.mui-btn-primary{
+	color:#519BFF;
+	border: 1px solid #519BFF;
+	padding: 6px 5px;
+}
+
+.mui-icon-chatbubble,
+.mui-icon-phone {
+	color: #519BFF;
+	font-size: 22px;
+	font-weight: bold;
+	position: relative;
+	top: -2px;
+}
+input{
+	font-size: 15px;
+}
+#usermsg{
+	width: 75%;
+}
